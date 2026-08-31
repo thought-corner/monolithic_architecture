@@ -1,0 +1,26 @@
+# NFR-09: 전체 시스템을 로컬에서 명령 하나로 기동한다.
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: monolith-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: monolith
+      MYSQL_USER: monolith
+      MYSQL_PASSWORD: monolith
+      TZ: Asia/Seoul
+    ports:
+      - "3306:3306"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  mysql-data:
