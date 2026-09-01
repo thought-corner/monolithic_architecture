@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: monolithic-architecture
+  datasource:
+    url: jdbc:mysql://localhost:3306/monolith?sslMode=DISABLED&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
+    username: monolith
+    password: monolith
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+order:
+  payment-timeout: 5s
+  reconciliation-interval: 1m
+
+# NFR-07. HS256은 256비트 이상을 요구하므로 32바이트 미만이면 기동에 실패한다.
+# 실제 환경에서는 환경변수나 비밀 저장소에서 읽는다. 저장소에 커밋할 값이 아니다.
+jwt:
+  secret: ${JWT_SECRET:monolithic-architecture-study-secret-key-32bytes-or-longer}
+  validity: 1h
