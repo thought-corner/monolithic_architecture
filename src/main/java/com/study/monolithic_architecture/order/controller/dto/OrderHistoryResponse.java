@@ -1,0 +1,19 @@
+package com.study.monolithic_architecture.order.controller.dto;
+
+import com.study.monolithic_architecture.order.domain.OrderStatus;
+import com.study.monolithic_architecture.order.service.dto.OrderHistoryInfo;
+import java.time.LocalDateTime;
+
+/**
+ * 주문 상태 변경 이력 응답. (FR-10)
+ */
+public record OrderHistoryResponse(OrderStatus fromStatus,
+								   OrderStatus toStatus,
+								   String reason,
+								   LocalDateTime occurredAt) {
+
+	public static OrderHistoryResponse from(OrderHistoryInfo info) {
+		return new OrderHistoryResponse(
+			info.fromStatus(), info.toStatus(), info.reason(), info.occurredAt());
+	}
+}

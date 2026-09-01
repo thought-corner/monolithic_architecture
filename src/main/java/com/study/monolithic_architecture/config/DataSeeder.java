@@ -1,21 +1,17 @@
 package com.study.monolithic_architecture.config;
 
-import com.study.monolithic_architecture.domain.Product;
-import com.study.monolithic_architecture.repository.ProductRepository;
-
+import com.study.monolithic_architecture.product.domain.Product;
+import com.study.monolithic_architecture.product.repository.ProductRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 /**
  * 로컬로 띄웠을 때 손으로 시나리오를 돌려볼 수 있도록 더미 상품을 채운다.
