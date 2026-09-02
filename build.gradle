@@ -5,7 +5,9 @@ plugins {
 }
 
 group = 'com.study'
-version = '0.0.1-SNAPSHOT'
+// v1 — 모놀리식 기준선. 이후 리팩토링은 여기서 출발한다.
+// 구조가 바뀌어도 S1~S3와 BR-1~BR-7이 그대로 통과해야 한다.
+version = '1.0.0'
 
 java {
     toolchain {
